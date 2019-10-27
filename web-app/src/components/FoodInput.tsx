@@ -1,10 +1,7 @@
 import * as React from "react";
+import { FoodCalorie } from "../models/FoodCalorie";
 
-export interface FoodInputProps { 
-    food? : string,
-    foodGroup?: string,
-    caloriesPer100g? : number
-}
+export interface FoodInputProps extends FoodCalorie { }
 
 export const FoodInput = (props: FoodInputProps) => {
     

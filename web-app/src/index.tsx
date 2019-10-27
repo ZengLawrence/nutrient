@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { FoodInput } from "./components/FoodInput";
+import { App } from "./components/App";
 
 ReactDOM.render(
-    <FoodInput />,
-    document.getElementById("nutrient-app")
+    <App />,
+   document.getElementById("nutrient-app")
 );
