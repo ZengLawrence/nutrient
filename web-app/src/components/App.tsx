@@ -1,32 +1,26 @@
 import * as React from 'react';
-
+import { useState } from 'react';
 import { FoodInput } from "./FoodInput";
 import { FoodList } from "./FoodList";
 import { FoodCalorie } from '../models/FoodCalorie';
 
 export interface AppProps {
-    foodCalories? : FoodCalorie[];
+  foodCalories?: FoodCalorie[];
 };
 
-let foodCalories: FoodCalorie[] = [];
-const initialState = {foodCalories: foodCalories};
-type State = typeof initialState;
+let emptyFoodCalories: FoodCalorie[] = [];
 
-class App extends React.Component<AppProps, State> {
-    
-    constructor(props : any) {
-        super(props);
-        this.state = initialState;
-    }
+export const App = (props: AppProps) => {
 
-    render() {
-      return (
-        <div>
-            <FoodInput />
-            <FoodList foodCalories= {this.state.foodCalories} />
-        </div>    
-      );
-    }
+  const [foodCalories, setFoodCalories] = useState(emptyFoodCalories);
+
+  const AddFoodCalorie = (foodCalorie: FoodCalorie) => {
+    setFoodCalories([...foodCalories, foodCalorie]);
   }
-
-  export { App }
+  return (
+    <div>
+      <FoodInput addFoooCalorie={AddFoodCalorie} />
+      <FoodList foodCalories={foodCalories} />
+    </div>
+  );
+}

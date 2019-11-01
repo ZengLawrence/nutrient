@@ -20,9 +20,9 @@ export const FoodList = (props: FoodListProps) => {
                     // Without the `key`, React will fire a key warning
                     <tr>
                         <React.Fragment key={item.food}>
-                            <td><input type="text" value={item.food} /></td>
-                            <td><input type="text" value={item.foodGroup} /></td>
-                            <td><input type="text" value={item.caloriesPer100g} /></td>
+                            <td>{item.food}</td>
+                            <td>{item.foodGroup}</td>
+                            <td>{item.caloriesPer100g}</td>
                         </React.Fragment>
                     </tr>
                 ))}
