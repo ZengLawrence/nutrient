@@ -6,10 +6,6 @@ export interface FoodInputProps extends FoodCalorie {
     addFoooCalorie: (foodcalorie: FoodCalorie) => void
 }
 
-function onClick() {
-    console.log("clicked on {food}");
-}
-
 export const FoodInput = (props: FoodInputProps) => {
 
     const [food, setFood] = useState(props.food);

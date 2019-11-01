@@ -5,5 +5,5 @@ import { App } from "./components/App";
 
 ReactDOM.render(
     <App />,
-   document.getElementById("nutrient-app")
+   document.getElementById("root")
 );
