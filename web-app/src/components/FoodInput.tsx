@@ -18,7 +18,6 @@ export const FoodInput = (props: FoodInputProps) => {
 
     const addFoodCalorie = () => {
         let foodCalorie : FoodCalorie = {food: food, foodGroup: foodGroup, caloriesPer100g: caloriesPer100g};
-        console.log("clicked on " + JSON.stringify(foodCalorie));
         props.addFoooCalorie(foodCalorie);
     }
 
