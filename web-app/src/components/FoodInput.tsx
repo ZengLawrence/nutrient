@@ -1,6 +1,7 @@
 import * as React from "react";
 import {useState} from "react";
 import { FoodCalorie } from "../models/FoodCalorie";
+import { Button } from 'reactstrap';
 
 export interface FoodInputProps extends FoodCalorie { 
     addFoooCalorie: (foodcalorie: FoodCalorie) => void
@@ -32,7 +33,7 @@ export const FoodInput = (props: FoodInputProps) => {
                         <td><input type="text" defaultValue={props.food} onChange={(e) => setFood(e.target.value)}/></td>
                         <td><input type="text" defaultValue={props.foodGroup} onChange={(e) => setFoodGroup(e.target.value)} /></td>
                         <td><input type="text" defaultValue={props.caloriesPer100g} onChange={(e) => setCaloriesPer100g(parseFloat(e.target.value))} /></td>
-                        <td><button onClick={() => addFoodCalorie()}>Add</button></td>
+                        <td><Button color="primary" onClick={() => addFoodCalorie()}>Add</Button></td>
                     </tr>
                 </tbody>
             </table>
