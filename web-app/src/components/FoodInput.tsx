@@ -39,7 +39,7 @@ export const FoodInput = (props: FoodInputProps) => {
                 <ModalBody>
                     <Label for="foodGroup">Food Group</Label>
                     <Input type="select" id="foodGroup" value={foodGroup} onChange={(e) => setFoodGroup(e.target.value)}>
-                        {foodGroups.sort().map( (fg) => <option>{fg}</option>)}
+                        {foodGroups.sort().map( (fg) => <option key={fg}>{fg}</option>)}
                     </Input>
                     <br />
                     <Label for="food">Food</Label>
