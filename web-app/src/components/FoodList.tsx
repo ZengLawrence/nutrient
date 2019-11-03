@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FoodCalorie } from '../models/FoodCalorie';
+import { Table } from 'reactstrap';
 
 export interface FoodListProps {
     foodCalories: FoodCalorie[]
@@ -7,7 +8,7 @@ export interface FoodListProps {
 
 export const FoodList = (props: FoodListProps) => {
     return (
-        <table>
+        <Table>
             <thead>
                 <tr>
                     <th>Food</th>
@@ -27,7 +28,7 @@ export const FoodList = (props: FoodListProps) => {
                     </React.Fragment>
                 ))}
             </tbody>
-        </table>
+        </Table>
     );
 }
 
