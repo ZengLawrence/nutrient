@@ -30,7 +30,7 @@ export const FoodInput = (props: FoodInputProps) => {
                 <ModalHeader toggle={toggle}>Add Calorie</ModalHeader>
                 <ModalBody>
                 <Label for="foodGroup">Food Group</Label>
-                <Input type="select" id="foodGroup" key="foodGroup" value={foodGroup} onChange={(e) => setFoodGroup(e.target.value)}>
+                <Input type="select" id="foodGroup" value={foodGroup} onChange={(e) => setFoodGroup(e.target.value)}>
                     <option>Vegetable</option>
                     <option>Fruit</option>
                     <option>Carbohydrate</option>
@@ -40,10 +40,10 @@ export const FoodInput = (props: FoodInputProps) => {
                 </Input>
                 <br />
                 <Label for="food">Food</Label>
-                <Input placeholder="Orange" id="food" key="food" value={food} onChange={(e) => setFood(e.target.value)} />
+                <Input placeholder="Orange" id="food" value={food} onChange={(e) => setFood(e.target.value)} />
                 <br />
                 <Label for="calorie">Calories per 100g</Label>
-                <Input type="number" id="calorie" key="calorie" value={caloriesPer100g} onChange={(e) => setCaloriesPer100g(parseInt(e.target.value))} />
+                <Input type="number" id="calorie" value={caloriesPer100g} onChange={(e) => setCaloriesPer100g(parseInt(e.target.value))} />
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" onClick={addFoodCalorie}>Add</Button>{' '}
