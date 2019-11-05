@@ -11,8 +11,8 @@ export const FoodList = (props: FoodListProps) => {
         <Table>
             <thead>
                 <tr>
-                    <th>Food</th>
                     <th>Food Group</th>
+                    <th>Food</th>
                     <th>Calries per 100g</th>
                 </tr>
             </thead>
@@ -21,8 +21,8 @@ export const FoodList = (props: FoodListProps) => {
                     // Without the `key`, React will fire a key warning
                     <React.Fragment key={item.food}>
                         <tr>
-                            <td>{item.food}</td>
                             <td>{item.foodGroup}</td>
+                            <td>{item.food}</td>
                             <td>{item.caloriesPer100g}</td>
                         </tr>
                     </React.Fragment>
