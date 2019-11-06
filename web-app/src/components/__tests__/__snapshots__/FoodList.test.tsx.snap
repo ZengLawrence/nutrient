@@ -22,3 +22,60 @@ exports[`renders empty food calorie list 1`] = `
   </table>
 </DocumentFragment>
 `;
+
+exports[`renders food calorie list with 3 food items 1`] = `
+<DocumentFragment>
+  <table
+    class="table"
+  >
+    <thead>
+      <tr>
+        <th>
+          Food Group
+        </th>
+        <th>
+          Food
+        </th>
+        <th>
+          Calries per 100g
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Fruit
+        </td>
+        <td>
+          Orange
+        </td>
+        <td>
+          47
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Carbohydrate
+        </td>
+        <td>
+          Sliced Bread
+        </td>
+        <td>
+          90
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Protein
+        </td>
+        <td>
+          Chicken Breast
+        </td>
+        <td>
+          110
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;
