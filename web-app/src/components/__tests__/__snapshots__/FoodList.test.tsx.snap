@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders empty food calorie list 1`] = `
+<DocumentFragment>
+  <table
+    class="table"
+  >
+    <thead>
+      <tr>
+        <th>
+          Food Group
+        </th>
+        <th>
+          Food
+        </th>
+        <th>
+          Calries per 100g
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</DocumentFragment>
+`;
