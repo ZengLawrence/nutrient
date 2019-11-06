@@ -12,15 +12,16 @@ const foodGroups = ["Vegetable",
 ];
 
 export interface FoodInputProps {
-    onFoodCalorieChanged: (foodcalorie: FoodCalorie) => void
+    onFoodCalorieChanged: (foodcalorie: FoodCalorie) => void,
+    isOpen: boolean,
+    toggle: () => void
 }
 
 export const FoodInput = (props: FoodInputProps) => {
 
-    const [modal, setModal] = useState(false);
-
-    const toggle = () => setModal(!modal);
-
+    const isOpen = props.isOpen;
+    const toggle = props.toggle;
+    
     const [food, setFood] = useState("");
     const [foodGroup, setFoodGroup] = useState("");
     const [caloriesPer100g, setCaloriesPer100g] = useState(0);
@@ -32,9 +33,7 @@ export const FoodInput = (props: FoodInputProps) => {
 
     return (
         <div>
-            <Button color="primary" onClick={toggle}>Add</Button>
-
-            <Modal isOpen={modal} toggle={toggle} >
+            <Modal isOpen={isOpen} toggle={toggle} >
                 <ModalHeader toggle={toggle}>Add Calorie</ModalHeader>
                 <ModalBody>
                     <Label for="foodGroup">Food Group</Label>
