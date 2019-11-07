@@ -7,7 +7,7 @@ import { Button } from 'reactstrap';
 
 export interface AppProps {
   foodCalories?: FoodCalorie[];
-};
+}
 
 let emptyFoodCalories: FoodCalorie[] = [];
 
@@ -29,5 +29,5 @@ export const App = (props: AppProps) => {
       <FoodInput isOpen={modal} toggle={toggle} onFoodCalorieChanged={addFoodCalorie} />
       <FoodList foodCalories={foodCalories} />
     </div>
-  );
+  )
 }
