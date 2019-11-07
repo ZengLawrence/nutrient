@@ -30,5 +30,5 @@ export const FoodList = (props: FoodListProps) => {
             </tbody>
         </Table>
     );
-}
+};
 

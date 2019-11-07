@@ -29,7 +29,7 @@ export const FoodInput = (props: FoodInputProps) => {
     const addFoodCalorie = () => {
         let foodCalorie: FoodCalorie = { food: food, foodGroup: foodGroup, caloriesPer100g: caloriesPer100g };
         props.onFoodCalorieChanged(foodCalorie);
-    }
+    };
 
     return (
         <div>
@@ -55,4 +55,4 @@ export const FoodInput = (props: FoodInputProps) => {
         </div>
     );
 
-}
+};

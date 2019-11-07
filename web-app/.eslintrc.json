@@ -26,6 +26,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "quotes": ["warn", "single"]
+        "quotes": ["warn", "single"],
+        "semi": ["warn"]
     }
 }

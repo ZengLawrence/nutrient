@@ -21,7 +21,7 @@ export const App = (props: AppProps) => {
 
   const addFoodCalorie = (foodCalorie: FoodCalorie) => {
     setFoodCalories([...foodCalories, foodCalorie]);
-  }
+  };
 
   return (
     <div>
@@ -29,5 +29,5 @@ export const App = (props: AppProps) => {
       <FoodInput isOpen={modal} toggle={toggle} onFoodCalorieChanged={addFoodCalorie} />
       <FoodList foodCalories={foodCalories} />
     </div>
-  )
-}
+  );
+};
