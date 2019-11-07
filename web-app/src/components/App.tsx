@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { FoodList } from "./FoodList";
+import { FoodList } from './FoodList';
 import { FoodCalorie } from '../models/FoodCalorie';
 import { FoodInput } from './FoodInput';
 import { Button } from 'reactstrap';

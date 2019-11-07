@@ -1,14 +1,14 @@
-import * as React from "react";
-import { useState } from "react";
-import { FoodCalorie } from "../models/FoodCalorie";
+import * as React from 'react';
+import { useState } from 'react';
+import { FoodCalorie } from '../models/FoodCalorie';
 import { Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const foodGroups = ["Vegetable",
-    "Fruit",
-    "Carbohydrate",
-    "Potein",
-    "Fat",
-    "Sweet",
+const foodGroups = ['Vegetable',
+    'Fruit',
+    'Carbohydrate',
+    'Potein',
+    'Fat',
+    'Sweet',
 ];
 
 export interface FoodInputProps {
@@ -22,8 +22,8 @@ export const FoodInput = (props: FoodInputProps) => {
     const isOpen = props.isOpen;
     const toggle = props.toggle;
     
-    const [food, setFood] = useState("");
-    const [foodGroup, setFoodGroup] = useState("");
+    const [food, setFood] = useState('');
+    const [foodGroup, setFoodGroup] = useState('');
     const [caloriesPer100g, setCaloriesPer100g] = useState(0);
 
     const addFoodCalorie = () => {
