@@ -23,7 +23,7 @@ export const FoodInput = (props: FoodInputProps) => {
     const toggle = props.toggle;
     
     const [food, setFood] = useState('');
-    const [foodGroup, setFoodGroup] = useState('');
+    const [foodGroup, setFoodGroup] = useState('Vegetable');
     const [caloriesPer100g, setCaloriesPer100g] = useState(0);
 
     const addFoodCalorie = () => {
@@ -42,7 +42,7 @@ export const FoodInput = (props: FoodInputProps) => {
                     </Input>
                     <br />
                     <Label for="food">Food</Label>
-                    <Input placeholder="Orange" id="food" value={food} onChange={(e) => setFood(e.target.value)} />
+                    <Input placeholder="Broccoli" id="food" value={food} onChange={(e) => setFood(e.target.value)} />
                     <br />
                     <Label for="calorie">Calories per 100g</Label>
                     <Input type="number" id="calorie" value={caloriesPer100g} onChange={(e) => setCaloriesPer100g(parseInt(e.target.value))} />
