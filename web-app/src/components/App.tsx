@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { FoodList } from './FoodList';
 import { FoodCalorie } from '../models/FoodCalorie';
 import { FoodInput } from './FoodInput';
 import { Button } from 'reactstrap';
+import { fetchAllFoodCalories } from '../services/FoodCalorieService';
 
 export interface AppProps {
   foodCalories?: FoodCalorie[];
@@ -16,6 +17,14 @@ export const App = (props: AppProps) => {
   const toggle = () => setModal(!modal);
 
   const [foodCalories, setFoodCalories] = useState([] as FoodCalorie[]);
+  useEffect( () => {
+
+    function callback(initialFoodCalories: FoodCalorie[]) {
+      setFoodCalories(initialFoodCalories);
+    }
+    
+    fetchAllFoodCalories(callback);
+  });
 
   const addFoodCalorie = (foodCalorie: FoodCalorie) => {
     setFoodCalories([...foodCalories, foodCalorie]);
