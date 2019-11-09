@@ -9,15 +9,13 @@ export interface AppProps {
   foodCalories?: FoodCalorie[];
 }
 
-let emptyFoodCalories: FoodCalorie[] = [];
-
 export const App = (props: AppProps) => {
 
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
-  const [foodCalories, setFoodCalories] = useState(emptyFoodCalories);
+  const [foodCalories, setFoodCalories] = useState([] as FoodCalorie[]);
 
   const addFoodCalorie = (foodCalorie: FoodCalorie) => {
     setFoodCalories([...foodCalories, foodCalorie]);
