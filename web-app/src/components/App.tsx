@@ -16,14 +16,19 @@ export const App = (props: AppProps) => {
 
   const toggle = () => setModal(!modal);
 
+  const [isLoaded, setIsLoaded] = useState(false);
   const [foodCalories, setFoodCalories] = useState([] as FoodCalorie[]);
   useEffect( () => {
 
     function callback(initialFoodCalories: FoodCalorie[]) {
       setFoodCalories(initialFoodCalories);
+      setIsLoaded(true);
     }
     
-    fetchAllFoodCalories(callback);
+    if (!isLoaded) {
+      fetchAllFoodCalories(callback);
+    }
+    
   });
 
   const addFoodCalorie = (foodCalorie: FoodCalorie) => {
