@@ -7,5 +7,5 @@ export const foodCaloriesRoute = (req: Request, resp: Response) => {
         {foodGroup: 'Fruit', food: 'Orange', caloriesPer100g: 47},
         {foodGroup: 'Carbohydrate', food: 'Sliced Bread', caloriesPer100g: 110},
     ];
-    resp.send( {foodCalories: foodCalories} );
+    resp.json( {foodCalories: foodCalories} );
 };
