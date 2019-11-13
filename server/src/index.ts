@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import { foodCaloriesRoute } from './routes/FoodCalories';
+import './routes';
+import { register } from './routes';
 
 // initialize configuration
 dotenv.config();
@@ -11,7 +12,7 @@ const port = process.env.SERVER_PORT;
 
 const app = express();
 
-app.get( '/api/food-calories', foodCaloriesRoute );
+register(app);
 
 // start the Express server
 app.listen( port, () => {
