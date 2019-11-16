@@ -20,6 +20,7 @@ const foodCaloriesRoute = (req: Request, resp: Response) => {
 };
 
 const addFoodCalorie = (req: Request, resp: Response) => {
+    console.log(req.body);
     const foodCalorie: FoodCalorie = req.body;
-    foodCalories = [...foodCalories, foodCalorie];
+    resp.json(foodCalorie);
 };

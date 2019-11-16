@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import bodyParser from 'body-parser';
 import './routes';
 import { register } from './routes';
 
@@ -11,6 +12,8 @@ dotenv.config();
 const port = process.env.SERVER_PORT;
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 register(app);
 
