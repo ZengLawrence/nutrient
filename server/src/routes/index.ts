@@ -1,12 +1,17 @@
 import { Router } from 'express';
 import {Response, Request} from 'express';
-import { FoodCalorie } from '../models/FoodCalorie';
+import FoodCalorie, { IFoodCalorie } from '../models/FoodCalorie';
+import mongoose from 'mongoose';
 
-let foodCalories: FoodCalorie[] = [
-    {foodGroup: 'Vegetable', food: 'Broccoli', caloriesPer100g: 35},
-    {foodGroup: 'Fruit', food: 'Orange', caloriesPer100g: 47},
-    {foodGroup: 'Carbohydrate', food: 'Sliced Bread', caloriesPer100g: 110},
-];
+const uri: string = "mongodb://localhost/nutrient";
+
+mongoose.connect(uri, (err) => {
+  if (err) {
+    console.log(err.message);
+  } else {
+    console.log("Successfully Connected!");
+  }
+});
 
 export const register = (router: Router) => {
     router.get( '/api/food-calories', foodCaloriesRoute );
@@ -16,11 +21,23 @@ export const register = (router: Router) => {
 };
 
 const foodCaloriesRoute = (req: Request, resp: Response) => {
-    resp.json( {foodCalories: foodCalories} );
+    FoodCalorie.find( (err, foodCalories) => {
+        if (err) {
+            resp.send("Error!");
+        } else {
+            resp.json( {foodCalories: foodCalories} );
+        }
+    })
 };
 
 const addFoodCalorie = (req: Request, resp: Response) => {
-    console.log(req.body);
-    const foodCalorie: FoodCalorie = req.body;
-    resp.json(foodCalorie);
+    const foodCalorie = new FoodCalorie(req.body);
+    foodCalorie.save((err) => {
+        if (err) {
+            resp.send(err);
+        } else {
+            resp.send(foodCalorie);
+        }
+
+    });
 };
