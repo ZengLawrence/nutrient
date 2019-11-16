@@ -13,13 +13,13 @@ export const FoodList = (props: FoodListProps) => {
                 <tr>
                     <th>Food Group</th>
                     <th>Food</th>
-                    <th>Calries per 100g</th>
+                    <th>Calories per 100g</th>
                 </tr>
             </thead>
             <tbody>
                 {props.foodCalories.map(item => (
                     // Without the `key`, React will fire a key warning
-                    <React.Fragment key={item.food}>
+                    <React.Fragment key={item._id}>
                         <tr>
                             <td>{item.foodGroup}</td>
                             <td>{item.food}</td>
