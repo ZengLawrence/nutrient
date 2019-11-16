@@ -12,6 +12,10 @@ export const fetchAllFoodCalories = (callback: (foodCalories: FoodCalorie[]) => 
 
 };
 
-export const addFoodCalorie = (foodCalorie: FoodCalorie) => {
-    axios.post('/api/food-calories', foodCalorie);
+export const addFoodCalorie = (foodCalorie: FoodCalorie, callback: (foodCalorie: FoodCalorie) => void) => {
+    axios.post('/api/food-calories', foodCalorie)
+        .then(function (resp: AxiosResponse<FoodCalorie>) {
+            console.log(resp.data);
+            callback(resp.data);
+        });
 };

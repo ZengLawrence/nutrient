@@ -4,7 +4,7 @@ import { FoodList } from './FoodList';
 import { FoodCalorie } from '../models/FoodCalorie';
 import { FoodInput } from './FoodInput';
 import { Button } from 'reactstrap';
-import { fetchAllFoodCalories } from '../services/FoodCalorieService';
+import { fetchAllFoodCalories, addFoodCalorie } from '../services/FoodCalorieService';
 
 export interface AppProps {
   foodCalories?: FoodCalorie[];
@@ -31,14 +31,16 @@ export const App = (props: AppProps) => {
     
   });
 
-  const addFoodCalorie = (foodCalorie: FoodCalorie) => {
-    setFoodCalories([...foodCalories, foodCalorie]);
+  const onFoodCalorieChanged = (foodCalorie: FoodCalorie) => {
+    addFoodCalorie(foodCalorie, (newFoodCalorie: FoodCalorie) => {
+      setFoodCalories([...foodCalories, newFoodCalorie]);
+    });
   };
 
   return (
     <div>
       <Button color="primary" onClick={toggle}>Add</Button>
-      <FoodInput isOpen={modal} toggle={toggle} onFoodCalorieChanged={addFoodCalorie} />
+      <FoodInput isOpen={modal} toggle={toggle} onFoodCalorieChanged={onFoodCalorieChanged} />
       <FoodList foodCalories={foodCalories} />
     </div>
   );
