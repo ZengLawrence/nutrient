@@ -14,7 +14,7 @@
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "clean": "rimraf dist/*",
+    "clean": "rimraf build/*",
     "start": "react-scripts start",
     "prebuild": "npm run clean",
     "build": "react-scripts build",
