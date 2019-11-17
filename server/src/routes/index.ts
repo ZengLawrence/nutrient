@@ -4,8 +4,12 @@ import FoodCalorie, { IFoodCalorie } from '../models/FoodCalorie';
 import mongoose from 'mongoose';
 
 const uri: string = "mongodb://localhost/nutrient";
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+};
 
-mongoose.connect(uri, (err) => {
+mongoose.connect(uri, options, (err) => {
   if (err) {
     console.log(err.message);
   } else {
