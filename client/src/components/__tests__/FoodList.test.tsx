@@ -10,9 +10,9 @@ it('renders empty food calorie list', () => {
 
 it('renders food calorie list with 3 food items', () => {
     const foodCalories: FoodCalorie[] = [
-        {food: 'Orange', foodGroup: 'Fruit', caloriesPer100g: 47},
-        {food: 'Sliced Bread', foodGroup: 'Carbohydrate', caloriesPer100g: 90},
-        {food: 'Chicken Breast', foodGroup: 'Protein', caloriesPer100g: 110},
+        {_id: '1', food: 'Orange', foodGroup: 'Fruit', caloriesPer100g: 47},
+        {_id: '2', food: 'Sliced Bread', foodGroup: 'Carbohydrate', caloriesPer100g: 90},
+        {_id: '3', food: 'Chicken Breast', foodGroup: 'Protein', caloriesPer100g: 110},
     ];
     const { asFragment } = render(<FoodList foodCalories={foodCalories} />);
     expect(asFragment()).toMatchSnapshot();

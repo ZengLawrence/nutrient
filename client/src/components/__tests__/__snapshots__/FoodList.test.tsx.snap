@@ -14,7 +14,7 @@ exports[`renders empty food calorie list 1`] = `
           Food
         </th>
         <th>
-          Calries per 100g
+          Calories per 100g
         </th>
       </tr>
     </thead>
@@ -37,7 +37,7 @@ exports[`renders food calorie list with 3 food items 1`] = `
           Food
         </th>
         <th>
-          Calries per 100g
+          Calories per 100g
         </th>
       </tr>
     </thead>

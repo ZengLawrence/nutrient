@@ -16,13 +16,13 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'build')));
+register(app);
+
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-
-register(app);
 
 // start the Express server
 app.listen( port, () => {
