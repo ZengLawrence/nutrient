@@ -6,13 +6,13 @@ import { Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from
 const foodGroups = ['Vegetable',
     'Fruit',
     'Carbohydrate',
-    'Potein',
+    'Protein',
     'Fat',
     'Sweet',
 ];
 
 export interface FoodInputProps {
-    onFoodCalorieChanged: (foodcalorie: FoodCalorie) => void,
+    onFoodCalorieChanged: (foodCalorie: FoodCalorie) => void,
     isOpen: boolean,
     toggle: () => void
 }

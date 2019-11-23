@@ -4,7 +4,7 @@ import { FoodCalorie } from '../../models/FoodCalorie';
 import { FoodInput } from '../FoodInput';
 
 it('click on Cancel to close form', () => {
-    const onFoodCalorieChanged = (foodcalorie: FoodCalorie) => {};
+    const onFoodCalorieChanged = (foodCalorie: FoodCalorie) => {};
     const toggle = jest.fn();
 
     const { getByText }  = render(<FoodInput onFoodCalorieChanged={onFoodCalorieChanged} isOpen={true} toggle={toggle}/>);
@@ -14,7 +14,7 @@ it('click on Cancel to close form', () => {
 });
 
 it('click on Add to add a food calorie, but form stays open e.g. no call on toggle()', () => {
-    const onFoodCalorieChanged = jest.fn((foodcalorie: FoodCalorie) => {});
+    const onFoodCalorieChanged = jest.fn((foodCalorie: FoodCalorie) => {});
     const toggle = jest.fn();
 
     const { getByText, getByLabelText }  = render(<FoodInput onFoodCalorieChanged={onFoodCalorieChanged} isOpen={true} toggle={toggle}/>);
@@ -34,7 +34,7 @@ it('click on Add to add a food calorie, but form stays open e.g. no call on togg
 });
 
 it('click on Add to add a food calorie, but did not select food group, should default to vegetable', () => {
-    const onFoodCalorieChanged = jest.fn((foodcalorie: FoodCalorie) => {});
+    const onFoodCalorieChanged = jest.fn((foodCalorie: FoodCalorie) => {});
     const toggle = jest.fn();
 
     const { getByText, getByLabelText }  = render(<FoodInput onFoodCalorieChanged={onFoodCalorieChanged} isOpen={true} toggle={toggle}/>);
