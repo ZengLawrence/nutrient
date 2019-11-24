@@ -5,6 +5,7 @@ import { FoodCalorie } from '../models/FoodCalorie';
 import { FoodInput } from './FoodInput';
 import { Button } from 'reactstrap';
 import { fetchAllFoodCalories, addFoodCalorie } from '../services/FoodCalorieService';
+import { Link } from 'react-router-dom';
 
 export interface HomeProps {
 }
@@ -39,7 +40,8 @@ export const Home = (props: HomeProps) => {
 
   return (
     <div>
-      <Button color="primary" onClick={toggle}>Add</Button>
+      <Button color="primary" onClick={toggle}>Add</Button>{' '}
+      <Link to="/food-calorie">+</Link>
       <FoodInput isOpen={modal} toggle={toggle} onFoodCalorieChanged={onFoodCalorieChanged} />
       <FoodList foodCalories={foodCalories} />
     </div>
