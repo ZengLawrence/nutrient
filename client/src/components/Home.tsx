@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-
-import { FoodList } from './FoodList';
-import { FoodCalorie } from '../models/FoodCalorie';
-import { FoodInput } from './FoodInput';
-import { Button } from 'reactstrap';
-import { fetchAllFoodCalories, addFoodCalorie } from '../services/FoodCalorieService';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
+import { FoodCalorie } from '../models/FoodCalorie';
+import { addFoodCalorie, fetchAllFoodCalories } from '../services/FoodCalorieService';
+import { FoodInput } from './FoodInput';
+import { FoodList } from './FoodList';
+
 
 export interface HomeProps {
 }
