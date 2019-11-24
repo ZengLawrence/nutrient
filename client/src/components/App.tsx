@@ -1,7 +1,7 @@
 import React from 'react';
-import { Home } from './Home';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { FoodInputForm } from './FoodInputForm';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Home } from './Home';
 
 export interface AppProps {
 }
