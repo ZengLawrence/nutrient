@@ -20,6 +20,13 @@ function makeServer({ environment = "development" } = {}) {
       this.get("/food-calories", schema => {
         return schema.foodCalories.all()
       })
+
+      this.post("/food-calories", (schema, request) => {
+        let attrs = JSON.parse(request.requestBody);
+
+        return schema.foodCalories.create(attrs);
+      })
+
     },
   })
 
