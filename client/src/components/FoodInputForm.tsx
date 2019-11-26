@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { FoodCalorie } from '../models/FoodCalorie';
 import { addFoodCalorie } from '../services/FoodCalorieService';
+import { useHistory } from 'react-router';
 
 const foodGroups = ['Vegetable',
     'Fruit',
@@ -29,12 +30,13 @@ export const FoodInputForm = (props: FoodInputFormProps) => {
 
         let foodCalorie: FoodCalorie = { food: food, foodGroup: foodGroup, caloriesPer100g: caloriesPer100g };
         addFoodCalorie(foodCalorie, () => {
-            toHomePage();
         });
+        toHomePage();
     };
 
+    const history = useHistory();
     const toHomePage = () => {
-        window.location.href = '/';
+        history.push('/');
     }
 
     return (
