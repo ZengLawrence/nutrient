@@ -26,12 +26,13 @@ export const FoodInputForm = (props: FoodInputFormProps) => {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+        } else {
+            event.preventDefault();
+            let foodCalorie: FoodCalorie = { food, foodGroup, caloriesPer100g };
+            addFoodCalorie(foodCalorie);
+            toHomePage();
         }
 
-        let foodCalorie: FoodCalorie = { food: food, foodGroup: foodGroup, caloriesPer100g: caloriesPer100g };
-        addFoodCalorie(foodCalorie, () => {
-        });
-        toHomePage();
     };
 
     const history = useHistory();
