@@ -1,5 +1,7 @@
 import { Server, Model } from "miragejs";
 
+const uuid = require('uuid/v1');
+
 function makeServer({ environment = "development" } = {}) {
   let server = new Server({
     environment,
@@ -9,9 +11,9 @@ function makeServer({ environment = "development" } = {}) {
     },
 
     seeds(server) {
-      server.create("foodCalorie", { _id: '1', foodGroup: 'Vegetable', food: 'Broccoli', caloriesPer100g: 35 });
-      server.create("foodCalorie", { _id: '2', foodGroup: 'Fruit', food: 'Orange', caloriesPer100g: 47 });
-      server.create("foodCalorie", { _id: '3', foodGroup: 'Carbohydrate', food: 'Sliced Bread', caloriesPer100g: 110 });
+      server.create("foodCalorie", { _id: uuid(), foodGroup: 'Vegetable', food: 'Broccoli', caloriesPer100g: 35 });
+      server.create("foodCalorie", { _id: uuid(), foodGroup: 'Fruit', food: 'Orange', caloriesPer100g: 47 });
+      server.create("foodCalorie", { _id: uuid(), foodGroup: 'Carbohydrate', food: 'Sliced Bread', caloriesPer100g: 110 });
     },
 
     routes() {
@@ -22,9 +24,9 @@ function makeServer({ environment = "development" } = {}) {
       })
 
       this.post("/food-calories", (schema, request) => {
-        let attrs = JSON.parse(request.requestBody);
-
-        return schema.foodCalories.create(attrs);
+        const attrs = JSON.parse(request.requestBody);
+        const attrsWithId = {...attrs, _id: uuid()};
+        return schema.foodCalories.create(attrsWithId);
       })
 
     },
