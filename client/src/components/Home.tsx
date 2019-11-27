@@ -23,14 +23,16 @@ export const Home = (props: HomeProps) => {
 
     function callback(initialFoodCalories: FoodCalorie[]) {
       setFoodCalories(initialFoodCalories);
-      setIsLoaded(true);
     }
     
+    // fetch data after component is loaded
     if (!isLoaded) {
       fetchAllFoodCalories(callback);
     }
+
+    setIsLoaded(true);
     
-  });
+  }, [isLoaded]);
 
   const onFoodCalorieChanged = (foodCalorie: FoodCalorie) => {
     addFoodCalorie(foodCalorie, (newFoodCalorie: FoodCalorie) => {
