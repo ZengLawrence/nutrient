@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Alert } from 'reactstrap';
+import { Alert, Button } from 'reactstrap';
 import { FoodCalorie } from '../models/FoodCalorie';
 import * as FoodCalorieService from '../services/FoodCalorieService';
 import { FoodInput } from './FoodInput';
@@ -19,9 +19,7 @@ function ShowFoodList(props: {
   } else {
     return (
       <div>
-        <Alert color="light">
-          Loading...
-              </Alert>
+        <Alert color="light">Loading...</Alert>
       </div>
     );
   }
