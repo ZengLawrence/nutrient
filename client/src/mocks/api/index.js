@@ -1,4 +1,5 @@
 import { Server, Model } from "miragejs";
+import { delayRouteHandler } from './Function';
 
 const uuid = require('uuid/v1');
 
@@ -17,17 +18,19 @@ function makeServer({ environment = "development" } = {}) {
     },
 
     routes() {
-      this.namespace = "api"
+      this.namespace = "api";
 
-      this.get("/food-calories", schema => {
-        return schema.foodCalories.all()
-      })
+      this.get("/food-calories");
 
-      this.post("/food-calories", (schema, request) => {
-        const attrs = JSON.parse(request.requestBody);
-        const attrsWithId = {...attrs, _id: uuid()};
-        return schema.foodCalories.create(attrsWithId);
-      })
+      this.post("/food-calories",
+        (schema, request) => {
+          const createFoodCalorieHandler = () => {
+            const attrs = JSON.parse(request.requestBody);
+            const attrsWithId = { ...attrs, _id: uuid() }
+            return schema.foodCalories.create(attrsWithId);
+          };
+          return delayRouteHandler(createFoodCalorieHandler, { timing: 1000 })
+        });
 
     },
   })
