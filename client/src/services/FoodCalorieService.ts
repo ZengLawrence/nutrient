@@ -1,7 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { FoodCalorie } from '../models/FoodCalorie';
-
-const axios = require('axios').default;
+import axios from 'axios';
 
 export const fetchAllFoodCalories = (callback: (foodCalories: FoodCalorie[]) => void) => {
 
