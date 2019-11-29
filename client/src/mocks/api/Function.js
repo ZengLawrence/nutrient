@@ -1,7 +1,7 @@
-export function delayRouteHandler(routeHandler, delay) {
+export function delayRouteHandler(routeHandler, options) {
     return new Promise(resolve => {
       setTimeout(() => resolve(routeHandler())
-      , delay);
+      , options.timing);
     });
   };
   
