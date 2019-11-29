@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Alert } from 'reactstrap';
 import { FoodCalorie } from '../models/FoodCalorie';
-import { addFoodCalorie, fetchAllFoodCalories } from '../services/FoodCalorieService';
+import * as FoodCalorieService from '../services/FoodCalorieService';
 import { FoodInput } from './FoodInput';
 import { FoodList } from './FoodList';
 
@@ -50,7 +50,7 @@ export const Home = (props: HomeProps) => {
     
     // fetch data after component is loaded
     if (!isLoaded) {
-      fetchAllFoodCalories(callback);
+      FoodCalorieService.fetchAll(callback);
     }
 
     setIsLoaded(true);
@@ -58,7 +58,7 @@ export const Home = (props: HomeProps) => {
   }, [isLoaded]);
 
   const onFoodCalorieChanged = (foodCalorie: FoodCalorie) => {
-    addFoodCalorie(foodCalorie, (newFoodCalorie: FoodCalorie) => {
+    FoodCalorieService.add(foodCalorie, (newFoodCalorie: FoodCalorie) => {
       setFoodCalories([...foodCalories, newFoodCalorie]);
     });
   };
