@@ -35,7 +35,7 @@ export const Home = (props: HomeProps) => {
 
   const toggle = () => setModal(!modal);
 
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [foodCalories, setFoodCalories] = useState([] as FoodCalorie[]);
 
@@ -55,19 +55,19 @@ export const Home = (props: HomeProps) => {
         }
     }
 
-    // fetch data after component is loaded
-    if (!isLoaded) {
+    // fetch data after component is mounted
+    if (!isMounted) {
       FoodCalorieService.fetchAll(callback);
     }
     FoodCalorieService.subscribeNew(handleNew);
 
-    setIsLoaded(true);
+    setIsMounted(true);
 
     return function cleanUp() {
         FoodCalorieService.unsubscribeNew();
     };
     
-  }, [isLoaded, foodCalories, status]);
+  }, [isMounted, foodCalories, status]);
 
   const onFoodCalorieChanged = (foodCalorie: FoodCalorie) => {
     FoodCalorieService.add(foodCalorie, (newFoodCalorie: FoodCalorie) => {
