@@ -27,6 +27,17 @@ function ShowFoodList(props: {
 
 }
 
+function ShowNotification(
+  props: {status: string}
+) {
+  const { status } = props;
+  if (_.isEmpty(status)) {
+    return <div />
+  } else {
+    return <Alert color='info'>{status}</Alert>;
+  }
+}
+
 export interface HomeProps {
 }
 
@@ -82,7 +93,7 @@ export const Home = (props: HomeProps) => {
 
   return (
     <div>
-      <Alert color='info'>{status}</Alert>
+      <ShowNotification status={status}/>
       <Button color="primary" onClick={toggle}>Add</Button>{' '}
       <Link to="/food-calorie">+</Link>
       <FoodInput isOpen={modal} toggle={toggle} onFoodCalorieChanged={onFoodCalorieChanged} />
