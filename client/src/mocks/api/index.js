@@ -1,7 +1,7 @@
 import { Server, Model } from "miragejs";
 import { delayRouteHandler } from './Function';
 
-const uuid = require('uuid/v1');
+const uuid = require('uuid/v4');  //random
 
 function makeServer({ environment = "development" } = {}) {
   let server = new Server({
@@ -26,8 +26,8 @@ function makeServer({ environment = "development" } = {}) {
         (schema, request) => {
           const createFoodCalorieHandler = () => {
             const attrs = JSON.parse(request.requestBody);
-            const attrsWithId = { ...attrs, _id: uuid() }
-            return schema.foodCalories.create(attrsWithId);
+            const saved = schema.foodCalories.create({ ...attrs, _id: uuid() });
+            return saved.attrs;
           };
           return delayRouteHandler(createFoodCalorieHandler, { timing: 1000 })
         });

@@ -39,6 +39,8 @@ export const Home = (props: HomeProps) => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [foodCalories, setFoodCalories] = useState([] as FoodCalorie[]);
 
+  const [status, setStatus] = useState('');
+
   useEffect( () => {
 
     function callback(initialFoodCalories: FoodCalorie[]) {
@@ -46,14 +48,26 @@ export const Home = (props: HomeProps) => {
       setIsDataLoaded(true);
     }
     
+    function handleNew(newFoodCalorie: FoodCalorie) {
+      if (newFoodCalorie) {
+        const food = newFoodCalorie.food;
+        setStatus(`New calorie for ${food}`);
+        }
+    }
+
     // fetch data after component is loaded
     if (!isLoaded) {
       FoodCalorieService.fetchAll(callback);
     }
+    FoodCalorieService.subscribeNew(handleNew);
 
     setIsLoaded(true);
+
+    return function cleanUp() {
+        FoodCalorieService.unsubscribeNew();
+    };
     
-  }, [isLoaded]);
+  }, [isLoaded, foodCalories, status]);
 
   const onFoodCalorieChanged = (foodCalorie: FoodCalorie) => {
     FoodCalorieService.add(foodCalorie, (newFoodCalorie: FoodCalorie) => {
@@ -63,6 +77,7 @@ export const Home = (props: HomeProps) => {
 
   return (
     <div>
+      <Alert color='info'>{status}</Alert>
       <Button color="primary" onClick={toggle}>Add</Button>{' '}
       <Link to="/food-calorie">+</Link>
       <FoodInput isOpen={modal} toggle={toggle} onFoodCalorieChanged={onFoodCalorieChanged} />

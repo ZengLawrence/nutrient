@@ -11,6 +11,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "reactstrap": "^8.1.1",
+    "rxjs": "^6.5.3",
     "typescript": "^3.6.4"
   },
   "scripts": {
@@ -40,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@reactivex/rxjs": "^6.5.3",
     "@testing-library/jest-dom": "^4.2.3",
     "@testing-library/react": "^9.3.2",
     "@types/enzyme": "^3.10.3",
