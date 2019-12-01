@@ -5,6 +5,7 @@ import { FoodCalorie } from '../models/FoodCalorie';
 import * as FoodCalorieService from '../services/FoodCalorieService';
 import { FoodInput } from './FoodInput';
 import { FoodList } from './FoodList';
+import _ from 'lodash';
 
 function ShowFoodList(props: {
   isDataLoaded: boolean,
@@ -52,7 +53,11 @@ export const Home = (props: HomeProps) => {
       if (newFoodCalorie) {
         const food = newFoodCalorie.food;
         setStatus(`New calorie for ${food}`);
+
+        if (_.findIndex(foodCalories, {'_id': newFoodCalorie._id}) === -1) {
+          setFoodCalories([...foodCalories, newFoodCalorie]);
         }
+      }
     }
 
     // fetch data after component is mounted
