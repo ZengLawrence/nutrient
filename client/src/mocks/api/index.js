@@ -1,5 +1,4 @@
-import { Server, Model } from "miragejs";
-import { delayRouteHandler } from './Function';
+import { Model, Server } from "miragejs";
 
 const uuid = require('uuid/v4');  //random
 
@@ -24,12 +23,9 @@ function makeServer({ environment = "development" } = {}) {
 
       this.post("/food-calories",
         (schema, request) => {
-          const createFoodCalorieHandler = () => {
-            const attrs = JSON.parse(request.requestBody);
-            const saved = schema.foodCalories.create({ ...attrs, _id: uuid() });
-            return saved.attrs;
-          };
-          return delayRouteHandler(createFoodCalorieHandler, { timing: 1000 })
+          const attrs = JSON.parse(request.requestBody);
+          const saved = schema.foodCalories.create({ ...attrs, _id: uuid() });
+          return saved.attrs;
         });
 
     },
@@ -39,7 +35,6 @@ function makeServer({ environment = "development" } = {}) {
 }
 
 export const startMockApiServer = () => {
-  console.log(`${process.env.NODE_ENV}`);
   if (process.env.NODE_ENV === "development") {
     makeServer()
   }
