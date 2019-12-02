@@ -1,9 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { BehaviorSubject, Subscription } from 'rxjs';
 import { FoodCalorie } from '../models/FoodCalorie';
-
-const subject = new BehaviorSubject<FoodCalorie>(null as unknown as FoodCalorie);
-let observer: Subscription;
 
 export const fetchAll = (callback: (foodCalories: FoodCalorie[]) => void) => {
 
@@ -19,14 +15,5 @@ export const add = (foodCalorie: FoodCalorie, callback = (foodCalorie: FoodCalor
         .then( res => res.data)
         .then( foodCalorie => {
             callback(foodCalorie);
-            subject.next(foodCalorie)
         });
 };
-
-export const subscribeNew = (callback: (foodCalorie: FoodCalorie) => void) => {
-    observer = subject.subscribe({next: callback});
-}
-
-export const unsubscribeNew = () => {
-    observer.unsubscribe();
-}
