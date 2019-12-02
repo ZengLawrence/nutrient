@@ -26,10 +26,7 @@ function ShowFoodList(props: {
 
 }
 
-export interface HomeProps {
-}
-
-export const Home = (props: HomeProps) => {
+export const Home = (props: {}) => {
 
   const [modal, setModal] = useState(false);
 
