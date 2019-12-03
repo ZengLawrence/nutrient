@@ -11,9 +11,9 @@ function makeServer({ environment = "development" } = {}) {
     },
 
     seeds(server) {
-      server.create("foodCalorie", { _id: uuid(), foodGroup: 'Vegetable', food: 'Broccoli', caloriesPer100g: 35 });
-      server.create("foodCalorie", { _id: uuid(), foodGroup: 'Fruit', food: 'Orange', caloriesPer100g: 47 });
-      server.create("foodCalorie", { _id: uuid(), foodGroup: 'Carbohydrate', food: 'Sliced Bread', caloriesPer100g: 110 });
+      server.create("foodCalorie", { _id: uuid(), food: 'Broccoli', caloriesPer100g: 35 });
+      server.create("foodCalorie", { _id: uuid(), food: 'Orange', caloriesPer100g: 47 });
+      server.create("foodCalorie", { _id: uuid(), food: 'Sliced Bread', caloriesPer100g: 110 });
     },
 
     routes() {

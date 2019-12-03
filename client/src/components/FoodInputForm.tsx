@@ -4,21 +4,12 @@ import { FoodCalorie } from '../models/FoodCalorie';
 import * as FoodCalorieService from '../services/FoodCalorieService';
 import { useHistory } from 'react-router';
 
-const foodGroups = ['Vegetable',
-    'Fruit',
-    'Carbohydrate',
-    'Protein',
-    'Fat',
-    'Sweet',
-];
-
 export interface FoodInputFormProps {
 }
 
 export const FoodInputForm = (props: FoodInputFormProps) => {
 
     const [food, setFood] = useState('');
-    const [foodGroup, setFoodGroup] = useState('Vegetable');
     const [caloriesPer100g, setCaloriesPer100g] = useState(0);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +19,7 @@ export const FoodInputForm = (props: FoodInputFormProps) => {
             event.stopPropagation();
         } else {
             event.preventDefault();
-            let foodCalorie: FoodCalorie = { food, foodGroup, caloriesPer100g };
+            let foodCalorie: FoodCalorie = { food, caloriesPer100g };
             FoodCalorieService.add(foodCalorie);
             toHomePage();
         }
@@ -43,12 +34,6 @@ export const FoodInputForm = (props: FoodInputFormProps) => {
     return (
         <div>
             <Form onSubmit={handleSubmit}>
-                <FormGroup>
-                    <Label for="foodGroup">Food Group</Label>
-                    <Input type="select" id="foodGroup" value={foodGroup} onChange={(e) => setFoodGroup(e.target.value)}>
-                        {foodGroups.sort().map((fg) => <option key={fg}>{fg}</option>)}
-                    </Input>
-                </FormGroup>
                 <FormGroup>
                     <Label for="food">Food</Label>
                     <Input required placeholder="Broccoli" id="food" value={food} onChange={(e) => setFood(e.target.value)} />
