@@ -1,9 +1,9 @@
 import React from 'react';
-import { FoodInputForm } from './FoodInputForm';
+import { FoodCalorieInputForm } from './FoodCalorieInputForm';
 
 export const AddFoodCalorieFormContainer = (props: {}) => {
 
    return (
-        <FoodInputForm foodCalorie={{food: '', caloriesPer100g: 0}}/>
+        <FoodCalorieInputForm foodCalorie={{food: '', caloriesPer100g: 0}}/>
     );
 };

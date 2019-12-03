@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { FoodCalorie } from '../models/FoodCalorie';
 import * as FoodCalorieService from '../services/FoodCalorieService';
 
-export const FoodInputForm = (props: {foodCalorie : FoodCalorie}) => {
+export const FoodCalorieInputForm = (props: {foodCalorie : FoodCalorie}) => {
 
     const { foodCalorie } = props;
     const [food, setFood] = useState(foodCalorie.food);
