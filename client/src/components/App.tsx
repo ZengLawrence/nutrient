@@ -1,12 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { FoodInputForm } from './FoodInputForm';
+import { AddFoodCalorieFormContainer } from './AddFoodCalorieFormContainer';
 import { Home } from './Home';
 
-export interface AppProps {
-}
-
-export const App = (props: AppProps) => {
+export const App = (props: {}) => {
 
   return (
     <Router>
@@ -15,7 +12,7 @@ export const App = (props: AppProps) => {
           <Home />
         </Route>
         <Route path="/food-calorie">
-          <FoodInputForm />
+          <AddFoodCalorieFormContainer />
         </Route>
       </Switch>
     </Router>

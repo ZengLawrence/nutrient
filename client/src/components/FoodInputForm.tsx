@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { FoodCalorie } from '../models/FoodCalorie';
 import * as FoodCalorieService from '../services/FoodCalorieService';
-import { useHistory } from 'react-router';
 
-export interface FoodInputFormProps {
-}
+export const FoodInputForm = (props: {foodCalorie : FoodCalorie}) => {
 
-export const FoodInputForm = (props: FoodInputFormProps) => {
-
-    const [food, setFood] = useState('');
-    const [caloriesPer100g, setCaloriesPer100g] = useState(0);
+    const { foodCalorie } = props;
+    const [food, setFood] = useState(foodCalorie.food);
+    const [caloriesPer100g, setCaloriesPer100g] = useState(foodCalorie.caloriesPer100g);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.currentTarget;
@@ -19,8 +17,7 @@ export const FoodInputForm = (props: FoodInputFormProps) => {
             event.stopPropagation();
         } else {
             event.preventDefault();
-            let foodCalorie: FoodCalorie = { food, caloriesPer100g };
-            FoodCalorieService.add(foodCalorie);
+            FoodCalorieService.add({ food, caloriesPer100g });
             toHomePage();
         }
 
