@@ -1,32 +1,29 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { FoodCalorie } from '../models/FoodCalorie';
-import * as FoodCalorieService from '../services/FoodCalorieService';
 
-export const FoodCalorieInputForm = (props: {foodCalorie : FoodCalorie}) => {
+export interface FoodCalorieInputFormProps {
+    foodCalorie : FoodCalorie,
+    add : (food: string, caloriesPer100g: number) => void,
+    cancel : () => void
+};
 
-    const { foodCalorie } = props;
+export const FoodCalorieInputForm = (props: FoodCalorieInputFormProps) => {
+
+    const { foodCalorie, add, cancel } = props;
     const [food, setFood] = useState(foodCalorie.food);
     const [caloriesPer100g, setCaloriesPer100g] = useState(foodCalorie.caloriesPer100g);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
+        event.preventDefault();
+        if (form.checkValidity() === true) {
+            add(food, caloriesPer100g);
         } else {
-            event.preventDefault();
-            FoodCalorieService.add({ food, caloriesPer100g });
-            toHomePage();
+            event.stopPropagation();
         }
 
     };
-
-    const history = useHistory();
-    const toHomePage = () => {
-        history.push('/');
-    }
 
     return (
         <div>
@@ -40,7 +37,7 @@ export const FoodCalorieInputForm = (props: {foodCalorie : FoodCalorie}) => {
                     <Input type="number" id="calorie" value={caloriesPer100g} onChange={(e) => setCaloriesPer100g(parseInt(e.target.value))} />
                 </FormGroup>
                 <Button color="primary" type='submit'>Add</Button>{' '}
-                <Button color="secondary" type='button' onClick={(e) => toHomePage()}>Cancel</Button>
+                <Button color="secondary" type='button' onClick={cancel}>Cancel</Button>
             </Form>
         </div>
     );
