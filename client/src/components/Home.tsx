@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Alert } from 'reactstrap';
 import { FoodCalorie } from '../models/FoodCalorie';
 import * as FoodCalorieService from '../services/FoodCalorieService';
+import { AddFoodCalorieFormContainer } from './AddFoodCalorieFormContainer';
 import { FoodList } from './FoodList';
 
 function ShowFoodList(props: {
@@ -50,7 +50,7 @@ export const Home = () => {
 
   return (
     <div>
-      <Link to="/food-calorie">+</Link>
+      <AddFoodCalorieFormContainer />
       <ShowFoodList isDataLoaded={isDataLoaded} foodCalories={foodCalories}/>
     </div>
   );
