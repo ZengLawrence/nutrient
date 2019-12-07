@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Form, FormGroup, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Label, InputGroupAddon, InputGroupText } from 'reactstrap';
 
 export interface FoodCalorieInputFormProps {
-    add : (food: string, caloriesPer100g: number) => void,
+    add: (food: string, caloriesPer100g: number) => void,
 };
 
 export const FoodCalorieInputForm = (props: FoodCalorieInputFormProps) => {
@@ -26,12 +26,17 @@ export const FoodCalorieInputForm = (props: FoodCalorieInputFormProps) => {
 
     return (
         <div>
-            <Form onSubmit={handleSubmit}>
-                <FormGroup>
-                    <Input required placeholder="Food" id="food" value={food} onChange={(e) => setFood(e.target.value)} />
+            <Form inline onSubmit={handleSubmit}>
+                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                    <Label for="food" className="mr-sm-2">Food</Label>
+                    <Input required placeholder="Broccoli" id="food" value={food} onChange={(e) => setFood(e.target.value)} />
                 </FormGroup>
-                <FormGroup>
-                    <Input type="number" id="calorie" value={caloriesPer100g} onChange={(e) => setCaloriesPer100g(parseInt(e.target.value))} />
+                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                    <Label for="calorie" className="mr-sm-2">Calories</Label>
+                    <Input type="number" id="calorie" value={caloriesPer100g} className="mr-sm-1" onChange={(e) => setCaloriesPer100g(parseInt(e.target.value))} />
+                    <InputGroupAddon addonType="append">
+                        <InputGroupText>/100g</InputGroupText>
+                    </InputGroupAddon>
                 </FormGroup>
                 <Button color="primary" type='submit'>Add</Button>
             </Form>
