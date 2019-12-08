@@ -34,14 +34,25 @@ export const FoodCalorieInputForm = (props: FoodCalorieInputFormProps) => {
                 <Col sm={8}>
                     <FormGroup>
                         <Label for="food">Food</Label>
-                        <Input invalid={foodInputInvalid} placeholder="Broccoli" id="food" value={food} onKeyDown={handleKeyDown} onChange={(e) => setFood(e.target.value)} />
+                        <Input invalid={foodInputInvalid}
+                            placeholder="Broccoli"
+                            id="food"
+                            value={food}
+                            onKeyDown={handleKeyDown}
+                            onChange={(e) => setFood(e.target.value)}
+                        />
                         <FormFeedback>Please enter a food</FormFeedback>
                     </FormGroup>
                 </Col>
                 <Col sm={4}>
                     <FormGroup>
                         <Label for="calorie">Calories/100g</Label>
-                        <Input type="number" id="calorie" value={caloriesPer100g} className="col-sm-6" onKeyDown={handleKeyDown} onChange={(e) => setCaloriesPer100g(parseInt(e.target.value))} />
+                        <Input type="number"
+                            id="calorie" value={caloriesPer100g}
+                            className="col-sm-6"
+                            onKeyDown={handleKeyDown}
+                            onChange={(e) => setCaloriesPer100g(parseInt(e.target.value))}
+                        />
                     </FormGroup>
                 </Col>
             </Row>
