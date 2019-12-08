@@ -29,7 +29,7 @@ export const FoodCalorieInputForm = (props: FoodCalorieInputFormProps) => {
     }
 
     return (
-        <Form>
+        <Form autoComplete="off">
             <Row form>
                 <Col sm={8}>
                     <FormGroup>
