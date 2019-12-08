@@ -1,26 +1,28 @@
 import React from 'react';
+import { Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap';
 import AddFoodCalorie from '../containers/AddFoodCalorie';
 import VisibleFoodCalorieList from '../containers/VisibleFoodCalorieList';
 
 export const Home = () => {
 
   return (
-    <div className="container">
-      <div className="row justify-content-md-center">
-        <div className="col-md-6">
-          <div className="card shadow-sm p-3 mt-3 mb-5 rounded">
-            <div className="card-body">
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col className="col-md-6">
+          <Card className="shadow-sm p-3 mt-3 mb-5 rounded">
+            <CardBody className="card-body">
 
-              <h4 className="card-title text-center">Food Calories</h4>
+              <CardTitle><h4 className="text-center">Food Calories</h4></CardTitle>
+
               <AddFoodCalorie />
               <VisibleFoodCalorieList />
 
-            </div>
-          </div>
+            </CardBody>
+          </Card>
 
-        </div>
+        </Col>
 
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
