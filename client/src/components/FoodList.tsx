@@ -1,12 +1,8 @@
-import * as React from 'react';
-import { FoodCalorie } from '../models/FoodCalorie';
+import React from 'react';
 import { Table } from 'reactstrap';
+import { FoodCalorie } from '../models/FoodCalorie';
 
-export interface FoodListProps {
-    foodCalories: FoodCalorie[]
-}
-
-export const FoodList = (props: FoodListProps) => {
+export const FoodList = (props: { foodCalories: FoodCalorie[] }) => {
     return (
         <Table hover>
             <thead>
