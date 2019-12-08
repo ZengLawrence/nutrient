@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'reactstrap';
 import { FoodCalorie } from '../models/FoodCalorie';
 
-export const FoodList = (props: { foodCalories: FoodCalorie[] }) => {
+export const FoodCalorieList = (props: { foodCalories: FoodCalorie[] }) => {
     return (
         <Table hover>
             <thead>

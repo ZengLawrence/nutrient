@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { FoodList } from '../components/FoodList';
+import { FoodCalorieList } from '../components/FoodCalorieList';
 import { AppState } from '../models/AppState';
 
 const mapStateToProps = (state: AppState) => ({
@@ -12,4 +12,4 @@ const mapDispatchToProps = () => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(FoodList)
+)(FoodCalorieList)
