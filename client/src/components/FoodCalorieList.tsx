@@ -14,7 +14,7 @@ export const FoodCalorieList = (props: { foodCalories: FoodCalorie[] }) => {
             <tbody>
                 {props.foodCalories.map(item => (
                     // Without the `key`, React will fire a key warning
-                    <React.Fragment key={item._id}>
+                    <React.Fragment key={item.id}>
                         <tr>
                             <td>{item.food}</td>
                             <td className="text-right">{item.caloriesPer100g}</td>

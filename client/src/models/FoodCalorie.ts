@@ -1,5 +1,5 @@
 export interface FoodCalorie {
-    _id?: string, 
+    id: string, 
     food : string,
     caloriesPer100g : number
 }

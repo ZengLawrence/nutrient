@@ -10,7 +10,7 @@ export const fetchAll = (callback: (foodCalories: FoodCalorie[]) => void) => {
 
 };
 
-export const add = (foodCalorie: FoodCalorie, callback = (foodCalorie: FoodCalorie) => {}) => {
+export const add = (foodCalorie: {food : string, caloriesPer100g : number}, callback = (foodCalorie: FoodCalorie) => {}) => {
     axios.post('/api/food-calories', foodCalorie)
         .then( res => res.data)
         .then( foodCalorie => {
