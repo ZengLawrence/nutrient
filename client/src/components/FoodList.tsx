@@ -8,11 +8,11 @@ export interface FoodListProps {
 
 export const FoodList = (props: FoodListProps) => {
     return (
-        <Table>
+        <Table hover>
             <thead>
-                <tr>
-                    <th>Food</th>
-                    <th>Calories per 100g</th>
+                <tr className="text-center p-3 mb-2 bg-light">
+                    <th className="col-sm-8">Food</th>
+                    <th className="col-sm-4">Calories/100g</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +21,7 @@ export const FoodList = (props: FoodListProps) => {
                     <React.Fragment key={item._id}>
                         <tr>
                             <td>{item.food}</td>
-                            <td>{item.caloriesPer100g}</td>
+                            <td className="text-right">{item.caloriesPer100g}</td>
                         </tr>
                     </React.Fragment>
                 ))}
