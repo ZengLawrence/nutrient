@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Col, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap';
 
 const ENTER_KEY = 13;
@@ -20,11 +20,15 @@ export const FoodCalorieInputForm = (props: FoodCalorieInputFormProps) => {
         return foodValid;
     }
 
+    const firstInputRef = useRef<HTMLInputElement>(null);
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.keyCode === ENTER_KEY && validate()) {
             add(food, caloriesPer100g);
             setFood('');
             setCaloriesPer100g(0);
+            if (firstInputRef && firstInputRef.current){
+                firstInputRef.current.focus();
+            }
         }
     }
 
@@ -38,6 +42,7 @@ export const FoodCalorieInputForm = (props: FoodCalorieInputFormProps) => {
                             placeholder="Broccoli"
                             id="food"
                             value={food}
+                            innerRef={firstInputRef}
                             onKeyDown={handleKeyDown}
                             onChange={(e) => setFood(e.target.value)}
                         />
