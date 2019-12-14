@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table } from 'reactstrap';
 import { FoodCalorie } from '../models/FoodCalorie';
+import { CalorieInputCell } from './CalorieInputCell';
 
 export const FoodCalorieList = (props: { foodCalories: FoodCalorie[] }) => {
     return (
@@ -17,7 +18,7 @@ export const FoodCalorieList = (props: { foodCalories: FoodCalorie[] }) => {
                     <React.Fragment key={item.id}>
                         <tr>
                             <td>{item.food}</td>
-                            <td className="text-right">{item.caloriesPer100g}</td>
+                            <td><CalorieInputCell caloriesPer100g={item.caloriesPer100g} handleChange={() => {}}/></td>
                         </tr>
                     </React.Fragment>
                 ))}
