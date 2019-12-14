@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap';
 import AddFoodCalorie from '../containers/AddFoodCalorie';
-import VisibleFoodCalorieList from '../containers/VisibleFoodCalorieList';
+import VisibleFoodCalorieList from '../containers/EditableFoodCalorieList';
 
 export const Home = () => {
 
