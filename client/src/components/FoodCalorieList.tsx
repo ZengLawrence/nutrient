@@ -18,7 +18,7 @@ export const FoodCalorieList = (props: { foodCalories: FoodCalorie[] }) => {
                     <React.Fragment key={item.id}>
                         <tr>
                             <td>{item.food}</td>
-                            <td><EditableCalorieInputCell caloriesPer100g={item.caloriesPer100g} /></td>
+                            <td><EditableCalorieInputCell initialValue={item.caloriesPer100g} /></td>
                         </tr>
                     </React.Fragment>
                 ))}
