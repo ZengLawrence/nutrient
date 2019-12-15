@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table } from 'reactstrap';
 import EditableCalorieInputCell from '../containers/EditableCalorieInputCell';
 import { FoodCalorie } from '../models/FoodCalorie';
@@ -12,11 +12,16 @@ const HeaderRow = () => (
 
 const DataRow = (props: { foodCalorie: FoodCalorie }) => {
     const { id, food, caloriesPer100g } = props.foodCalorie;
+    const [edit, setEdit] = useState(false);
 
     return (
-        <tr>
+        <tr onMouseEnter={()=>setEdit(true)} onMouseLeave={()=>setEdit(false)}>
             <td>{food}</td>
-            <td><EditableCalorieInputCell id={id} value={caloriesPer100g} /></td>
+            <td>
+                {edit ? <EditableCalorieInputCell type="number" id={id} value={caloriesPer100g} className="text-right"/> :
+                <div className="text-right">{caloriesPer100g}</div>
+                }
+            </td>
         </tr>
 
     );
