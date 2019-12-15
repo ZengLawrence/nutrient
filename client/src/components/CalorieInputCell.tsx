@@ -2,8 +2,8 @@ import React, { ChangeEvent, useState, useRef, useEffect, FocusEvent } from 'rea
 import { Input } from 'reactstrap';
 
 export interface CalorieInputCellProps {
-    value?: number,
-    initialValue: number,
+    id: string,
+    value: number,
     handleChange?: (event: ChangeEvent<HTMLInputElement>) => void,
     handleFocus?: (event: FocusEvent<HTMLInputElement>) => void,
     handleBlur?: (event: FocusEvent<HTMLInputElement>) => void,
@@ -29,15 +29,14 @@ export const CalorieInputCell = (props: CalorieInputCellProps) => {
     return (
         <div onClick={() => setEditMode(true)}>
             {editMode ? (<Input type="number"
-                    value={props.value}
-                    defaultValue={props.initialValue}
+                    value={props.value || ''}
                     onChange={props.handleChange}
                     onFocus={props.handleFocus}
                     onBlur={handleBlur}
                     innerRef={inputEL}
                     className="text-right"
                 />) :
-                (<div className="text-right">{props.initialValue}</div>)}
+                (<div className="text-right">{props.value}</div>)}
         </div>
     )
 }
