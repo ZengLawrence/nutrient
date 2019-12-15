@@ -3,24 +3,34 @@ import { Table } from 'reactstrap';
 import EditableCalorieInputCell from '../containers/EditableCalorieInputCell';
 import { FoodCalorie } from '../models/FoodCalorie';
 
+const HeaderRow = () => (
+    <tr className="text-center p-3 mb-2 bg-light">
+        <th className="col-sm-8">Food</th>
+        <th className="col-sm-4">Calories/100g</th>
+    </tr>
+);
+
+const DataRow = (props: { foodCalorie: FoodCalorie }) => {
+    const { foodCalorie } = props;
+    return (
+        <tr>
+            <td>{foodCalorie.food}</td>
+            <td><EditableCalorieInputCell id={foodCalorie.id} value={foodCalorie.caloriesPer100g} /></td>
+        </tr>
+
+    );
+}
+
 export const FoodCalorieList = (props: { foodCalories: FoodCalorie[] }) => {
     return (
         <Table hover>
             <thead>
-                <tr className="text-center p-3 mb-2 bg-light">
-                    <th className="col-sm-8">Food</th>
-                    <th className="col-sm-4">Calories/100g</th>
-                </tr>
+                <HeaderRow />
             </thead>
             <tbody>
                 {props.foodCalories.map(item => (
                     // Without the `key`, React will fire a key warning
-                    <React.Fragment key={item.id}>
-                        <tr>
-                            <td>{item.food}</td>
-                            <td><EditableCalorieInputCell id={item.id} value={item.caloriesPer100g} /></td>
-                        </tr>
-                    </React.Fragment>
+                    <DataRow key={item.id} foodCalorie={item} />
                 ))}
             </tbody>
         </Table>
