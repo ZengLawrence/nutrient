@@ -2,7 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
 import { refreshFoodCalories } from './actions';
 import { App } from './components/App';
 import { startMockApiServer } from './mocks/api';
@@ -14,7 +15,7 @@ if (process.env.NODE_ENV === "development") {
   startMockApiServer();
 };
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 render(
   <Provider store={store}>

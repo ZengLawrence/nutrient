@@ -1,8 +1,8 @@
 import { ChangeEvent } from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { editFoodCalorieChange, editFoodCalorieEnd, editFoodCalorieStart, saveEditFoodCalorieChange } from '../actions';
 import { CalorieInputCell } from '../components/CalorieInputCell';
-import { editFoodCalorieChange, editFoodCalorieStart, editFoodCalorieEnd } from '../actions';
 import { AppState } from '../models/AppState';
 
 const calorieValue = (state: AppState, ownProps : {id: string, value: number}) => {
@@ -18,7 +18,7 @@ const mapStateToProps = (state : AppState, ownProps : {id: string, value: number
     value: calorieValue(state, ownProps),
 });
     
-const mapDispatchToProps = (dispatch: Dispatch, ownProps: {id: string, value: number}) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, undefined, any>, ownProps: {id: string, value: number}) => ({
     handleFocus: () => {
         const partial = { 
             id: ownProps.id, 
@@ -31,6 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps: {id: string, value: nu
         dispatch(editFoodCalorieChange({ caloriesPer100g }));
     },
     handleBlur: () => {
+        dispatch(saveEditFoodCalorieChange());
         dispatch(editFoodCalorieEnd());
     }
 })

@@ -7,6 +7,14 @@ export const foodCalories = (state: FoodCalorie[] = [], action: any) => {
                 ...state,
                 action.foodCalorie
             ]
+        case 'UPDATE_FOOD_CALORIE':
+            return state.map( foodCalorie => {
+                if (foodCalorie.id === action.attr.id) {
+                    return {...foodCalorie, ...action.attr};
+                } else {
+                    return foodCalorie;
+                }
+            });
         case 'REFRESH_FOOD_CALORIES':
             return [...action.foodCalories];
         default:
