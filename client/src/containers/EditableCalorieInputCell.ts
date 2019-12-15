@@ -2,7 +2,7 @@ import { ChangeEvent } from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { editFoodCalorieChange, editFoodCalorieEnd, editFoodCalorieStart, saveEditFoodCalorieChange } from '../actions';
-import { CalorieInputCell } from '../components/CalorieInputCell';
+import { CalorieInputCell } from '../components/NumberInputCell';
 import { AppState } from '../models/AppState';
 
 const calorieValue = (state: AppState, ownProps : {id: string, value: number}) => {
