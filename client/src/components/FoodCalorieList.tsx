@@ -11,11 +11,12 @@ const HeaderRow = () => (
 );
 
 const DataRow = (props: { foodCalorie: FoodCalorie }) => {
-    const { foodCalorie } = props;
+    const { id, food, caloriesPer100g } = props.foodCalorie;
+
     return (
         <tr>
-            <td>{foodCalorie.food}</td>
-            <td><EditableCalorieInputCell id={foodCalorie.id} value={foodCalorie.caloriesPer100g} /></td>
+            <td>{food}</td>
+            <td><EditableCalorieInputCell id={id} value={caloriesPer100g} /></td>
         </tr>
 
     );
