@@ -1,12 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
 import { FoodCalorie } from '../models/FoodCalorie';
 
-export const fetchAll = (callback: (foodCalories: FoodCalorie[]) => void) => {
+export const fetchAll = () => {
 
-    axios.get('/api/food-calories')
-        .then(function (resp: AxiosResponse<{foodCalories: FoodCalorie[]}>) {
-            callback(resp.data.foodCalories);
-        });
+    return axios.get('/api/food-calories')
+        .then((resp : AxiosResponse<{foodCalories: FoodCalorie[]}>) => resp.data.foodCalories);
 
 };
 

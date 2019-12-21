@@ -24,4 +24,4 @@ render(
   document.getElementById('root')
 );
 
-fetchAll(foodCalories => store.dispatch(refreshFoodCalories(foodCalories)));
+fetchAll().then(foodCalories => store.dispatch(refreshFoodCalories(foodCalories)));
