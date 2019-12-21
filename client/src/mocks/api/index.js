@@ -1,7 +1,5 @@
 import { Model, Server } from "miragejs";
 
-const uuid = require('uuid/v4');  //random
-
 function makeServer({ environment = "development" } = {}) {
   let server = new Server({
     environment,
@@ -11,9 +9,9 @@ function makeServer({ environment = "development" } = {}) {
     },
 
     seeds(server) {
-      server.create("foodCalorie", { _id: uuid(), food: 'Broccoli', caloriesPer100g: 35 });
-      server.create("foodCalorie", { _id: uuid(), food: 'Orange', caloriesPer100g: 47 });
-      server.create("foodCalorie", { _id: uuid(), food: 'Sliced Bread', caloriesPer100g: 110 });
+      server.create("foodCalorie", { food: 'Broccoli', caloriesPer100g: 35 });
+      server.create("foodCalorie", { food: 'Orange', caloriesPer100g: 47 });
+      server.create("foodCalorie", { food: 'Sliced Bread', caloriesPer100g: 110 });
     },
 
     routes() {
@@ -24,7 +22,7 @@ function makeServer({ environment = "development" } = {}) {
       this.post("/food-calories",
         (schema, request) => {
           const attrs = JSON.parse(request.requestBody);
-          return schema.db.foodCalories.insert({ ...attrs, _id: uuid() });
+          return schema.db.foodCalories.insert(attrs);
         });
 
     },
