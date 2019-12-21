@@ -8,7 +8,7 @@ import { refreshFoodCalories } from './actions';
 import { App } from './components/App';
 import { startMockApiServer } from './mocks/api';
 import { rootReducer } from './reducers';
-import { fetchAll } from './services/FoodCalorieService';
+import { getAll } from './services/FoodCalorieService';
 
 if (process.env.NODE_ENV === "development") {
   console.log('starting API mock server');
@@ -24,4 +24,4 @@ render(
   document.getElementById('root')
 );
 
-fetchAll().then(foodCalories => store.dispatch(refreshFoodCalories(foodCalories)));
+getAll().then(foodCalories => store.dispatch(refreshFoodCalories(foodCalories)));
