@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Table } from 'reactstrap';
-import EditableCalorieInputCell from '../containers/EditableCalorieInputCell';
+import EditableCalorieInput from '../containers/EditableCalorieInput';
 import { FoodCalorie } from '../models/FoodCalorie';
 
 const HeaderRow = () => (
@@ -18,7 +18,7 @@ const DataRow = (props: { foodCalorie: FoodCalorie }) => {
         <tr onMouseEnter={()=>setEdit(true)} onMouseLeave={()=>setEdit(false)}>
             <td>{food}</td>
             <td>
-                {edit ? <EditableCalorieInputCell type="number" id={id} value={caloriesPer100g} className="text-right"/> :
+                {edit ? <EditableCalorieInput type="number" id={id} value={caloriesPer100g} className="text-right"/> :
                 <div className="text-right">{caloriesPer100g}</div>
                 }
             </td>
