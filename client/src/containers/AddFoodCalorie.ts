@@ -9,8 +9,8 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = (dispatch : Dispatch) => ({
     add: (food: string, caloriesPer100g: number) => {
-        FoodCalorieService.add({ food, caloriesPer100g }, 
-            (foodCalorie) => dispatch(addFoodCalorie(foodCalorie)));
+        FoodCalorieService.add({ food, caloriesPer100g })
+            .then(foodCalorie => dispatch(addFoodCalorie(foodCalorie)));
     }
 })
 
