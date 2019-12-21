@@ -18,12 +18,7 @@ function makeServer({ environment = "development" } = {}) {
       this.namespace = "api";
 
       this.get("/food-calories");
-
-      this.post("/food-calories",
-        (schema, request) => {
-          const attrs = JSON.parse(request.requestBody);
-          return schema.db.foodCalories.insert(attrs);
-        });
+      this.post("/food-calories");
 
     },
   })

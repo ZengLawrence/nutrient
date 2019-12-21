@@ -6,7 +6,12 @@ export const fetchAll = async () => {
     return resp.data.foodCalories;
 };
 
-export const add = async (foodCalorie: { food: string, caloriesPer100g: number }) => {
-    const resp: AxiosResponse<FoodCalorie> = await axios.post('/api/food-calories', foodCalorie);
-    return resp.data;
+export const add = async (attributes: { food: string, caloriesPer100g: number }) => {
+    const resp: AxiosResponse<{foodCalorie: FoodCalorie}> = await axios.post('/api/food-calories', {
+        data: {
+            type: 'foodCalorie',
+            attributes,
+        },
+    });
+    return resp.data.foodCalorie;
 };
