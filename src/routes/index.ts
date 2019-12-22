@@ -40,12 +40,14 @@ const addFoodCalorie = (req: Request, resp: Response) => {
     });
 };
 
-const deleteFoodCalorie = (req: Request, resp: Response) => {
+const deleteFoodCalorie = async (req: Request, resp: Response) => {
     const id = req.params['id'];
-    FoodCalorie.deleteOne({ _id: id })
-        .exec()
-        .then(() => resp.sendStatus(204))
-        .catch(err => resp.send(err));
+    const result = await FoodCalorie.deleteOne({ _id: id });
+    if (result.ok) {
+        resp.sendStatus( result.deletedCount === 1 ? 204 : 404);
+    } else {
+        resp.sendStatus(500);
+    }
 };
 
 export const register = (router: Router) => {
