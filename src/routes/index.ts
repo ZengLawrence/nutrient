@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import {Response, Request} from 'express';
+import { Response, Request } from 'express';
 import FoodCalorie, { IFoodCalorie } from '../models/FoodCalorie';
 import mongoose from 'mongoose';
 
+// TODO externalize mongo connection string
 const uri: string = "mongodb://localhost/nutrient";
 const options = {
     useNewUrlParser: true,
@@ -10,26 +11,19 @@ const options = {
 };
 
 mongoose.connect(uri, options, (err) => {
-  if (err) {
-    console.log(err.message);
-  } else {
-    console.log("Successfully Connected!");
-  }
+    if (err) {
+        console.log(err.message);
+    } else {
+        console.log("Successfully Connected!");
+    }
 });
 
-export const register = (router: Router) => {
-    router.get( '/api/food-calories', foodCaloriesRoute );
-    router.post('/api/food-calories', addFoodCalorie);
-
-    return router;
-};
-
 const foodCaloriesRoute = (req: Request, resp: Response) => {
-    FoodCalorie.find( (err, foodCalories) => {
+    FoodCalorie.find((err, foodCalories) => {
         if (err) {
             resp.send("Error!");
         } else {
-            resp.json( {foodCalories: foodCalories} );
+            resp.json({ foodCalories: foodCalories });
         }
     })
 };
@@ -44,4 +38,20 @@ const addFoodCalorie = (req: Request, resp: Response) => {
         }
 
     });
+};
+
+const deleteFoodCalorie = (req: Request, resp: Response) => {
+    const id = req.params['id'];
+    FoodCalorie.deleteOne({ _id: id })
+        .exec()
+        .then(() => resp.sendStatus(204))
+        .catch(err => resp.send(err));
+};
+
+export const register = (router: Router) => {
+    router.get('/api/food-calories', foodCaloriesRoute);
+    router.post('/api/food-calories', addFoodCalorie);
+    router.delete('/api/food-calories/:id', deleteFoodCalorie);
+
+    return router;
 };
