@@ -19,6 +19,7 @@ function makeServer({ environment = "development" } = {}) {
 
       this.get("/food-calories");
       this.post("/food-calories");
+      this.del("/food-calories/:id");
 
     },
   })

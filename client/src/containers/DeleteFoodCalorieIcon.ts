@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import { foodCalorieDeleted } from '../actions';
+import { ThunkDispatch } from 'redux-thunk';
+import { deleteFoodCalorie } from '../actions';
+import { AppState } from '../models/AppState';
 
-const mapDispatchToProps = (dispatch : Dispatch, ownProps: {id: string}) => ({
-    onClick: () => dispatch(foodCalorieDeleted(ownProps.id)),
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, undefined, any>, ownProps: { id: string }) => ({
+    onClick: () => dispatch(deleteFoodCalorie(ownProps.id)),
 })
 
 export default connect(

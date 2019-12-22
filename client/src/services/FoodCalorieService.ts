@@ -15,3 +15,8 @@ export const post = async (attributes: { food: string, caloriesPer100g: number }
     });
     return resp.data.foodCalorie;
 };
+
+export const del =  async (id: string) => {
+    const resp: AxiosResponse = await axios.delete(`/api/food-calories/${id}`);
+    return resp.status === 204;  // no content
+}

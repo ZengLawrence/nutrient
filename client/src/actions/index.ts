@@ -1,6 +1,7 @@
 import { FoodCalorie } from "../models/FoodCalorie";
 import { Dispatch } from "redux";
 import { AppState } from "../models/AppState";
+import * as FoodCalorieService from '../services/FoodCalorieService';
 
 export const addFoodCalorie = (foodCalorie : FoodCalorie) => ({
   type: 'ADD_FOOD_CALORIE',
@@ -21,6 +22,13 @@ export const refreshFoodCalories = (foodCalories : FoodCalorie[]) => ({
   type: 'REFRESH_FOOD_CALORIES',
   foodCalories
 })
+
+export const deleteFoodCalorie = (id: string) => {
+  return function (dispatch: Dispatch, getState: () => AppState) {
+    FoodCalorieService.del(id);
+    dispatch(foodCalorieDeleted(id));
+  }
+}
 
 // edit food calorie
 export const editFoodCalorieStart = (foodCalorie : any) => ({
