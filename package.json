@@ -9,7 +9,7 @@
     "prebuild": "cd client && npm run-script build",
     "build": "npm-run-all clean tsc",
     "postbuild": "mkdir -p dist/client/build && cp -r client/build/ dist/client/build",
-    "dev:start": "npm-run-all build start",
+    "dev:start": "npm run tsc && npm run start",
     "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
