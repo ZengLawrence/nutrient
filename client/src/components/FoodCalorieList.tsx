@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Table } from 'reactstrap';
 import EditableCalorieInput from '../containers/EditableCalorieInput';
 import { FoodCalorie } from '../models/FoodCalorie';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import DeleteFoodCalorieIcon from '../containers/DeleteFoodCalorieIcon';
 
 const HeaderRow = () => (
     <tr className="text-center p-3 mb-2 bg-light">
@@ -15,11 +17,11 @@ const DataRow = (props: { foodCalorie: FoodCalorie }) => {
     const [edit, setEdit] = useState(false);
 
     return (
-        <tr onMouseEnter={()=>setEdit(true)} onMouseLeave={()=>setEdit(false)}>
-            <td>{food}</td>
+        <tr onMouseEnter={() => setEdit(true)} onMouseLeave={() => setEdit(false)}>
+            <td>{edit ? <DeleteFoodCalorieIcon icon={faTrashAlt} id={id}/> : ''} {food}</td>
             <td>
-                {edit ? <EditableCalorieInput type="number" id={id} value={caloriesPer100g} className="text-right"/> :
-                <div className="text-right">{caloriesPer100g}</div>
+                {edit ? <EditableCalorieInput type="number" id={id} value={caloriesPer100g} className="text-right" /> :
+                    <div className="text-right">{caloriesPer100g}</div>
                 }
             </td>
         </tr>

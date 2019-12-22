@@ -1,4 +1,4 @@
-import { FoodCalorie } from "../models/FoodCalorie"
+import { FoodCalorie } from "../models/FoodCalorie";
 
 export const foodCalories = (state: FoodCalorie[] = [], action: any) => {
     switch (action.type) {
@@ -15,6 +15,8 @@ export const foodCalories = (state: FoodCalorie[] = [], action: any) => {
                     return foodCalorie;
                 }
             });
+        case 'FOOD_CALORIE_DELETED':
+            return state.filter(foodCalorie => foodCalorie.id !== action.id);
         case 'REFRESH_FOOD_CALORIES':
             return [...action.foodCalories];
         default:

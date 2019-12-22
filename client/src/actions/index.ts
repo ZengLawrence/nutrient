@@ -12,6 +12,11 @@ export const updateFoodCalorie = (attr : any) => ({
   attr
 })
 
+export const foodCalorieDeleted = (id : string) => ({
+  type: 'FOOD_CALORIE_DELETED',
+  id
+})
+
 export const refreshFoodCalories = (foodCalories : FoodCalorie[]) => ({
   type: 'REFRESH_FOOD_CALORIES',
   foodCalories
