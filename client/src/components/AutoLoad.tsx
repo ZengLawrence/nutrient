@@ -7,22 +7,29 @@ export interface AutoLoadProps {
 const firstChildNode = (children: ReactNode) => (React.Children.toArray(children)[0]);
 const restChildNodes = (children: ReactNode) => (React.Children.toArray(children).slice(1));
 
-export const AutoLoad: React.FC<PropsWithChildren<AutoLoadProps>> = props => {
-
-    const { load } = props;
+const useLoadingState = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        const shouldLoad = () => (!isLoaded && !isLoading);
+    const startLoading = () => setIsLoading(true);
+    const endLoading = () => {
+        setIsLoading(false);
+        setIsLoaded(true);
+    };
 
+    return { shouldLoad: (!isLoaded && !isLoading), isLoading, startLoading, endLoading };
+}
+
+const useAutoLoad = (load: () => Promise<any>) => {
+    const { shouldLoad, isLoading, startLoading, endLoading } = useLoadingState();
+
+    useEffect(() => {
         const timeout = setTimeout(() => {
-            if (shouldLoad()) {
-                setIsLoading(true);
+            if (shouldLoad) {
+                startLoading();
 
                 load().then(() => {
-                    setIsLoading(false);
-                    setIsLoaded(true);
+                    endLoading();
                 });
             }
         });
@@ -31,7 +38,14 @@ export const AutoLoad: React.FC<PropsWithChildren<AutoLoadProps>> = props => {
             clearTimeout(timeout);
         }
 
-    }, [isLoaded, isLoading, load])
+    }, [shouldLoad, startLoading, endLoading, load]);
+
+    return { isLoading };
+}
+
+export const AutoLoad: React.FC<PropsWithChildren<AutoLoadProps>> = props => {
+
+    const { isLoading } = useAutoLoad(props.load);
 
     return (
         <React.Fragment>
