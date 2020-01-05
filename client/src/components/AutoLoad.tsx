@@ -16,13 +16,21 @@ export const AutoLoad: React.FC<PropsWithChildren<AutoLoadProps>> = props => {
     useEffect(() => {
         const shouldLoad = () => (!isLoaded && !isLoading);
 
-        if (shouldLoad()) {
-            setIsLoading(true);
-            load().then(() => {
-                setIsLoading(false);
-                setIsLoaded(true);
-            });
+        const timeout = setTimeout(() => {
+            if (shouldLoad()) {
+                setIsLoading(true);
+
+                load().then(() => {
+                    setIsLoading(false);
+                    setIsLoaded(true);
+                });
+            }
+        });
+
+        return function cleanUp() {
+            clearTimeout(timeout);
         }
+
     }, [isLoaded, isLoading, load])
 
     return (
