@@ -1,10 +1,18 @@
 import React from 'react';
-import { Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap';
+import { Card, CardBody, CardTitle, Col, Container, Row, Spinner } from 'reactstrap';
 import AddFoodCalorie from '../containers/AddFoodCalorie';
 import VisibleFoodCalorieList from '../containers/ViewableFoodCalorieList';
+import { AutoLoad } from './AutoLoad';
+import { useDispatch } from 'react-redux';
+import { getAll } from '../services/FoodCalorieService';
+import { refreshFoodCalories } from '../actions';
 
 export const Home = () => {
 
+  const dispatch = useDispatch();
+
+  const load = () => getAll().then(foodCalories => dispatch(refreshFoodCalories(foodCalories)));
+  
   return (
     <Container>
       <Row className="justify-content-md-center">
@@ -13,9 +21,11 @@ export const Home = () => {
             <CardBody className="card-body">
 
               <CardTitle><h4 className="text-center">Food Calories</h4></CardTitle>
-
-              <AddFoodCalorie />
-              <VisibleFoodCalorieList />
+              <AutoLoad load={load}>
+                <Spinner />
+                <AddFoodCalorie />
+                <VisibleFoodCalorieList />
+              </AutoLoad>
 
             </CardBody>
           </Card>

@@ -4,11 +4,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { refreshFoodCalories } from './actions';
 import { App } from './components/App';
 import { startMockApiServer } from './mocks/api';
 import { rootReducer } from './reducers';
-import { getAll } from './services/FoodCalorieService';
 
 if (process.env.NODE_ENV === "development") {
   console.log('starting API mock server');
@@ -23,5 +21,3 @@ render(
   </Provider>,
   document.getElementById('root')
 );
-
-getAll().then(foodCalories => store.dispatch(refreshFoodCalories(foodCalories)));
