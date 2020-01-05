@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { Response, Request } from 'express';
-import FoodCalorie, { IFoodCalorie } from '../models/FoodCalorie';
+import FoodCalorie from '../models/FoodCalorie';
 import mongoose from 'mongoose';
 
 // TODO externalize mongo connection string
@@ -18,14 +18,9 @@ mongoose.connect(uri, options, (err) => {
     }
 });
 
-const foodCaloriesRoute = (req: Request, resp: Response) => {
-    FoodCalorie.find((err, foodCalories) => {
-        if (err) {
-            resp.send("Error!");
-        } else {
-            resp.json({ foodCalories: foodCalories });
-        }
-    })
+const foodCaloriesRoute = async (req: Request, resp: Response) => {
+    const foodCalories = await FoodCalorie.find();
+    return resp.json({ foodCalories });
 };
 
 const addFoodCalorie = (req: Request, resp: Response) => {
